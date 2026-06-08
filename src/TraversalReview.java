@@ -208,6 +208,13 @@ public class TraversalReview {
      * @return whether there is it least one zero value in the tree.
      */
     public static boolean hasZero(TreeNode node) {
+        if(node == null) return false;
+        boolean bool1 = false;
+        boolean bool2 = false;
+
+        if(hasZero(node.left) || hasZero(node.right)) bool1 = true;
+        if(node.data == 0) bool2 = true;
+        if(bool1 || bool2) return true;
         return false;
     }
 
