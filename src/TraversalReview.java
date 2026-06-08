@@ -244,21 +244,8 @@ public class TraversalReview {
      */
     public static boolean hasNonDivisible(TreeNode node, int k) {
         if(node == null) return false;
-        boolean bool1 = false;
-        boolean bool2 = false;
-        if((hasNonDivisible(node.left, k) || node.left == null) && (hasNonDivisible(node.right, k) || node.right == null))
-        {   
-            bool1 = true;
-        }
-        if(node.data % k == 0)
-        {
-            bool2 = false;
-        }
-        if(bool1 && bool2)
-        {
-            return false;
-        }
-        return true;
+        if(node.data % k != 0) return true;
+        return  hasNonDivisible(node.left, k) || hasNonDivisible(node.right, k);
     }
 
     /**
