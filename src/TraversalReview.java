@@ -243,7 +243,22 @@ public class TraversalReview {
      * @return whether every value is divisible by k
      */
     public static boolean hasNonDivisible(TreeNode node, int k) {
-        return false;
+        if(node == null) return false;
+        boolean bool1 = false;
+        boolean bool2 = false;
+        if((hasNonDivisible(node.left, k) || node.left == null) && (hasNonDivisible(node.right, k) || node.right == null))
+        {   
+            bool1 = true;
+        }
+        if(node.data % k == 0)
+        {
+            bool2 = false;
+        }
+        if(bool1 && bool2)
+        {
+            return false;
+        }
+        return true;
     }
 
     /**
@@ -269,6 +284,11 @@ public class TraversalReview {
      * @return a string with all the values of the tree concatenated in-order
      */
     public static String concatenate(TreeNode node) {
-        return "";
+        if(node == null) return "";
+        String fS = "";
+        fS += concatenate(node.left);
+        fS += String.valueOf(node.data);
+        fS += concatenate(node.right);
+        return fS;
     }
 }
